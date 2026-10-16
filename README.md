@@ -2,9 +2,8 @@
 
 **Multimodal surrogate modeling and high-throughput alloy screening for Mg-air battery anodes.**
 
-This repository contains the core workflow used to build the BatteryBERT-GB fusion model, identify current-density-specific element pools, screen quaternary Mg alloys, interpret model predictions, and reproduce Figures 2-5 of the associated paper.
+This repository contains the core workflow used to build the BatteryBERT-GB fusion model, identify current-density-specific element pools, screen quaternary Mg alloys, interpret model predictions.
 
-> **Data availability:** Experimental data, trained model weights, and generated screening results are not included. See [Required Inputs](#required-inputs) for the expected local files.
 
 ## Research Workflow
 
