@@ -23,7 +23,7 @@ The computational workflow consists of four main stages:
 ```text
 MgAir-Multimodal/
 |-- scripts/           # Modeling, screening, interpretation, and plotting code
-|-- .gitignore         # Excludes data, model artifacts, caches, and generated figures
+|-- .gitignore         # Model artifacts, caches, and generated figures
 |-- requirements.txt   # Python dependencies
 `-- README.md          # Project documentation
 ```
