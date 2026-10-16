@@ -24,6 +24,7 @@ SHEET_NAME = "Sheet1"
 OUTPUT_DIR = "outputs_design_search_multiCD_selected"
 
 MODEL_NAME = "batterydata/batterybert-uncased"   # or "bert-base-uncased"
+FEATURE_SCHEMA_VERSION = "v2_mg_balance_no_mg_token"
 
 # ---- Multi-CD search plans (your latest) ----
 # NOTE: This script performs TRUE TERNARY (Mg + 2 elements) search.
@@ -329,6 +330,8 @@ def train_or_load_models(df, numeric_cols, yV_col, yE_col,
     for _, r in df2.iterrows():
         active_elements = []
         for el in element_names_all:
+            if el == "Mg":
+                continue
             try:
                 if abs(float(r.get(el, 0.0))) > 1e-12:
                     active_elements.append(el)
@@ -382,9 +385,13 @@ def train_or_load_models(df, numeric_cols, yV_col, yE_col,
         else:
             if os.path.exists(ENCODER_INFO_PATH):
                 saved_encoder_info = joblib.load(ENCODER_INFO_PATH)
-                if saved_encoder_info.get("MODEL_NAME") != MODEL_NAME:
-                    print("[WARN] Cached MODEL_NAME mismatch -> retrain.")
+                if (saved_encoder_info.get("MODEL_NAME") != MODEL_NAME
+                        or saved_encoder_info.get("FEATURE_SCHEMA_VERSION") != FEATURE_SCHEMA_VERSION):
+                    print("[WARN] Cached encoder/feature schema mismatch -> retrain.")
                     have_models = False
+            else:
+                print("[WARN] Cached encoder schema metadata missing -> retrain.")
+                have_models = False
 
     if have_models:
         base_num_V, base_txt_V, meta_V = joblib.load(MODEL_V_PATH)
@@ -457,7 +464,11 @@ def train_or_load_models(df, numeric_cols, yV_col, yE_col,
             joblib.dump((base_num_V, base_txt_V, meta_V), MODEL_V_PATH)
             joblib.dump((base_num_E, base_txt_E, meta_E), MODEL_E_PATH)
             joblib.dump(numeric_cols, NUMCOLS_PATH)
-            joblib.dump({"MODEL_NAME": MODEL_NAME, "MAX_LENGTH": MAX_LENGTH}, ENCODER_INFO_PATH)
+            joblib.dump({
+                "MODEL_NAME": MODEL_NAME,
+                "MAX_LENGTH": MAX_LENGTH,
+                "FEATURE_SCHEMA_VERSION": FEATURE_SCHEMA_VERSION,
+            }, ENCODER_INFO_PATH)
             print(f"[OK] Trained and saved final models to: {OUTPUT_DIR}")
 
     model_pack = {
@@ -539,6 +550,10 @@ def run_search_plan(plan, numeric_cols, colmap, model_pack, element_cols_present
         chunk = pd.DataFrame(rows)
 
         Xnum = pd.DataFrame(0.0, index=np.arange(len(chunk)), columns=numeric_cols)
+
+        # Mg is the balance component in the experimental table and must not be zeroed.
+        if "Mg" in Xnum.columns:
+            Xnum["Mg"] = 100.0 - chunk["sum_selected_additions_wt%"].values
 
         # fill elements (with NaN filling as fixed previously)
         for el in var_elements:

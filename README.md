@@ -50,6 +50,8 @@ combinations(element_pool, 3)
 
 This represents an Mg matrix plus three alloying additions and therefore corresponds to a **quaternary alloy system**.
 
+Screening candidates encode Mg as the balance component (`100 - total additions`). Feature-schema metadata prevents models created with an older candidate encoding from being reused silently.
+
 ## Publication Figures
 
 | Script | Output |
@@ -59,6 +61,14 @@ This represents an Mg matrix plus three alloying additions and therefore corresp
 | `scripts/build_figure4_explainability.py` | Figure 4: global and current-density-specific SHAP interpretation of the final BatteryBERT-Fusion model. |
 | `scripts/build_figure5_quaternary_screening.py` | Figure 5: quaternary-system rankings, candidate distributions, and representative pathways at 2.5, 10, and 40 mA cm⁻². |
 | `scripts/split_figure5_subfigures.py` | Replots Figure 5 panels (a)-(i) as separate PNG, PDF, and SVG files. |
+
+## Supplementary Machine-Learning Materials
+
+| Script | Output |
+|---|---|
+| `scripts/build_supplementary_ml_materials.py` | Builds Figure S3 applicability-domain and OOF uncertainty diagnostics, together with source tables for Tables S1-S3. |
+
+The supplementary workflow uses the saved eight-model OOF predictions and fold-specific HPO results. Figure S3 reports a five-nearest-neighbor applicability-domain score and cross-fold residual-interval coverage. Tables S1-S3 document model inputs, HPO spaces and selected parameters, pooled metrics, bootstrap confidence intervals, and complete fold-wise metrics.
 
 ## Supporting and Reference Code
 
@@ -112,6 +122,7 @@ python scripts/build_figure3_reference_style.py
 python scripts/build_figure4_explainability.py
 python scripts/build_figure5_quaternary_screening.py
 python scripts/split_figure5_subfigures.py
+python scripts/build_supplementary_ml_materials.py
 ```
 
 ## Outputs
@@ -124,4 +135,3 @@ python scripts/split_figure5_subfigures.py
 | `outputs_figure4_explainability/` | SHAP values, caches, and Figure 4 intermediate results. |
 | `outputs_GBstack_hpo/` | Stacking-model artifacts and OOF evaluation outputs. |
 | `outputs_design_search_multiCD_selected/` | High-throughput screening candidates and reusable model artifacts. |
-
