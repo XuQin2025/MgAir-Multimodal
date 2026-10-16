@@ -35,7 +35,7 @@ from sklearn.tree import DecisionTreeRegressor
 from transformers import AutoModel, AutoTokenizer
 
 
-ROOT = Path(__file__).resolve().parent
+ROOT = Path(__file__).resolve().parent.parent
 RAWDATA_PATH = ROOT / "rawdata.xlsx"
 FIGURE_DIR = ROOT / "paper_figures"
 OUTPUT_DIR = ROOT / "outputs_figure3_8models"

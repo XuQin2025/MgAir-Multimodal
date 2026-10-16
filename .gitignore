@@ -26,6 +26,14 @@ paper_figures/
 *.pth
 *.ckpt
 
+# Experimental and generated tabular data
+DATASET/
+data/
+*.xlsx
+*.xls
+*.csv
+*.tsv
+
 # Operating-system files
 .DS_Store
 Thumbs.db

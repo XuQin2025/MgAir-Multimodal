@@ -16,7 +16,7 @@ from build_figure5_quaternary_screening import (
 )
 
 
-ROOT = Path(__file__).resolve().parent
+ROOT = Path(__file__).resolve().parent.parent
 SOURCE_PATH = ROOT / "paper_figures" / "Figure5_screening_source_data.xlsx"
 OUTPUT_DIR = ROOT / "paper_figures" / "Figure5_subfigures"
 

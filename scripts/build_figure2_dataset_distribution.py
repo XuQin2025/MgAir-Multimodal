@@ -13,7 +13,7 @@ import seaborn as sns
 from matplotlib.colors import LinearSegmentedColormap, LogNorm, to_rgb
 
 
-ROOT = Path(__file__).resolve().parent
+ROOT = Path(__file__).resolve().parent.parent
 RAWDATA_PATH = ROOT / "rawdata.xlsx"
 FIGURE_DIR = ROOT / "paper_figures"
 

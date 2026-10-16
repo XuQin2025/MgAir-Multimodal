@@ -20,7 +20,7 @@ from matplotlib.colors import LinearSegmentedColormap, Normalize
 from build_figure4_explainability import embed_texts, load_encoder, predict_pack
 
 
-ROOT = Path(__file__).resolve().parent
+ROOT = Path(__file__).resolve().parent.parent
 MODEL_DIR = ROOT / "outputs_design_search_multiCD_selected"
 FIGURE_DIR = ROOT / "paper_figures"
 

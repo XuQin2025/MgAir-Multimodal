@@ -23,7 +23,7 @@ from matplotlib.patches import Rectangle
 from transformers import AutoModel, AutoTokenizer
 
 
-ROOT = Path(__file__).resolve().parent
+ROOT = Path(__file__).resolve().parent.parent
 RAWDATA_PATH = ROOT / "rawdata.xlsx"
 MODEL_DIR = ROOT / "outputs_design_search_multiCD_selected"
 FIGURE_DIR = ROOT / "paper_figures"

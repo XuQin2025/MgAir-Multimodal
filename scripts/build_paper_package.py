@@ -24,7 +24,7 @@ from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
 
 
-ROOT = Path(__file__).resolve().parent
+ROOT = Path(__file__).resolve().parent.parent
 RAWDATA_PATH = ROOT / "rawdata.xlsx"
 CLASSICAL_METRICS_PATH = ROOT / "model_evaluation_cv_results.xlsx"
 GBSTACK_DIR = ROOT / "outputs_GBstack_hpo"
