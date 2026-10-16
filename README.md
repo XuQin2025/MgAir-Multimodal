@@ -37,7 +37,7 @@ These scripts form the primary computational workflow and should be executed in 
 | Priority | Script | Role |
 |---|---|---|
 | 1 | `scripts/bertmutimodelstack.py` | Trains and evaluates the BatteryBERT-GB late-fusion stacking model. Produces five-fold OOF predictions, metrics, and reusable model outputs. |
-| 2 | `scripts/Find_element313.py` | Performs dual-objective ranking at 2.5, 10, and 40 mA cm⁻² and produces `top5_alloys_summary.xlsx` for element-pool construction. |
+| 2 | `scripts/Find_element313.py` | Performs dual-objective ranking at 2.5, 10, and 40 mA cm⁻² and produces for element-pool construction. |
 | 3 | `scripts/filter_251040_Ternary.py` | Runs the final quaternary Mg-alloy search across current-specific composition and processing grids. |
 
 ### Filename Note
