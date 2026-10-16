@@ -125,9 +125,3 @@ python scripts/split_figure5_subfigures.py
 | `outputs_GBstack_hpo/` | Stacking-model artifacts and OOF evaluation outputs. |
 | `outputs_design_search_multiCD_selected/` | High-throughput screening candidates and reusable model artifacts. |
 
-## Reproducibility Notes
-
-- Use the same version of `rawdata.xlsx` for model training, SHAP interpretation, and figure generation.
-- Figure 3 depends on helper functions in `scripts/build_paper_package.py`; both scripts must remain in `scripts/`.
-- Figure 3 and Figure 4 can load Transformer models from the local Hugging Face cache for offline execution.
-- Full high-throughput screening is computationally intensive; reuse existing model artifacts when only regenerating figures.
