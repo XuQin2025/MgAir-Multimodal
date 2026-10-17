@@ -40,19 +40,9 @@ These scripts form the primary computational workflow and should be executed in 
 | 2 | `scripts/Find_element313.py` | Performs dual-objective ranking at 2.5, 10, and 40 mA cm⁻² and produces for element-pool construction. |
 | 3 | `scripts/filter_251040_Ternary.py` | Runs the final quaternary Mg-alloy search across current-specific composition and processing grids. |
 
-### Filename Note
 
-Although `filter_251040_Ternary.py` contains `Ternary` in its historical filename, it uses:
 
-```python
-combinations(element_pool, 3)
-```
-
-This represents an Mg matrix plus three alloying additions and therefore corresponds to a **quaternary alloy system**.
-
-Screening candidates encode Mg as the balance component (`100 - total additions`). Feature-schema metadata prevents models created with an older candidate encoding from being reused silently.
-
-## Publication Figures
+## Figures
 
 | Script | Output |
 |---|---|
