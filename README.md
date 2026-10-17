@@ -94,16 +94,6 @@ python scripts/Find_element313.py
 python scripts/filter_251040_Ternary.py
 ```
 
-### Reproduce Figures 2-5
 
-Run these commands after the required model and screening outputs are available:
-
-```powershell
-python scripts/build_figure2_dataset_distribution.py
-python scripts/build_figure3_reference_style.py
-python scripts/build_figure4_explainability.py
-python scripts/build_figure5_quaternary_screening.py
-python scripts/split_figure5_subfigures.py
-python scripts/build_supplementary_ml_materials.py
 ```
 
